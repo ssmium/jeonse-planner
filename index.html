@@ -228,7 +228,7 @@
         <input type="range" id="loan" min="11160" max="15000" step="160" value="11160"></div>
       <div class="field"><div class="top"><span class="name">대출 금리(연)</span><span class="val" id="rateVal"></span></div>
         <input type="range" id="rate" min="1.8" max="3.5" step="0.1" value="2.3"></div>
-      <div class="toggle-row"><div class="toggle on" data-cost="std">표준 부대비용</div><div class="toggle" data-cost="save">절약 모드</div></div>
+      <div class="toggle-row"><div class="toggle on" data-cost="std">포장이사 기준</div><div class="toggle" data-cost="save">일반이사 기준</div></div>
       <div class="result" id="result"><div class="r-label">이사 후 비상금</div><div class="r-num" id="rNum">—</div><div class="r-tag" id="rTag">—</div></div>
       <div class="warn ltv" id="warnLtv">⚠️ 대출이 보증금의 80%(LTV)를 넘어요.</div>
       <div class="warn limit" id="warnLimit">⚠️ 청년버팀목 신한도 1.5억을 넘었어요.</div>
@@ -241,7 +241,7 @@
         <div class="brow total"><span>총 조달</span><span id="bRaise"></span></div>
       </div>
       <div class="interest"><span class="l">예상 월 이자</span><span class="r" id="monthly"></span></div>
-      <div class="verdict">🟢 <b>고민될 땐 그냥 1.5억.</b> 비상금 약 310만 남고, 엄마한테 안 빌려도 되고, 묘권도 OK예요. 이게 정답이에요.</div>
+      <div class="verdict">🟢 <b>고민될 땐 그냥 1.5억.</b> 비상금 약 384만 남고, 엄마한테 안 빌려도 되고, 묘권도 OK예요. 이게 정답이에요.</div>
     </div></div>
   </div>
 
@@ -299,8 +299,8 @@
       <p class="sub">대출 동결 기준 · 안 봐도 결론은 1.5억이에요</p>
       <table><thead><tr><th>보증금</th><th>비상금</th><th>월이자</th><th>판정</th></tr></thead>
       <tbody>
-        <tr class="hl"><td>1.5억</td><td>310만</td><td>21.6만</td><td><span class="pill ok">안전</span></td></tr>
-        <tr><td>1.55억</td><td>-192만</td><td>22.3만</td><td><span class="pill mid">빠듯</span></td></tr>
+        <tr class="hl"><td>1.5억</td><td>384만</td><td>21.6만</td><td><span class="pill ok">안전</span></td></tr>
+        <tr><td>1.55억</td><td>-116만</td><td>22.3만</td><td><span class="pill mid">빠듯</span></td></tr>
         <tr><td>1.6억</td><td>증액필수</td><td>24.7만</td><td><span class="pill mid">증액시</span></td></tr>
         <tr><td>1.8억</td><td>300만</td><td>27.0만</td><td><span class="pill no">위험</span></td></tr>
       </tbody></table>
@@ -370,7 +370,7 @@ function renderNow(){
 const CALM=[
   {t:'그 집은 1월엔 없어요',p:'지금 보는 매물은 8개월 뒤엔 이미 다 나가요. 솔님이 이사할 27년 1월엔 완전히 다른 매물들이 나와요. 지금 흔들려봐야 못 사는 집이에요. 🌱'},
   {t:'1.5억도 충분히 좋아요',p:'1.8억 신축이랑 1.5억 구축, 3,000만 차이는 "신축 vs 컨디션 좋은 구축" 정도예요. 묘권 좋고 채광 좋으면 1.5억으로도 충분히 예쁜 집 만들 수 있어요. 🏡'},
-  {t:'비상금이 진짜 중요해요',p:'고양이 둘 + 이직 + 이사 겹치는 시기예요. 비상금 310만이 있어야 갑자기 병원비 나와도 안 무너져요. 집 평수보다 마음의 평화가 먼저예요. 💙'},
+  {t:'비상금이 진짜 중요해요',p:'고양이 둘 + 이직 + 이사 겹치는 시기예요. 비상금 384만이 있어야 갑자기 병원비 나와도 안 무너져요. 집 평수보다 마음의 평화가 먼저예요. 💙'},
   {t:'지금은 그냥 쉬어도 돼요',p:'5월에 부동산 앱 매일 보면 매일 흔들려요. 일주일에 한 번이면 충분해요. 11월부터 진짜로 보면 돼요. 그때까지는 솔님 일상을 즐기세요. ☕'}
 ];
 let calmIdx=0;
@@ -403,7 +403,7 @@ document.querySelectorAll('.sec').forEach(sec=>{
 
 /* ---------- 💰 자금 ---------- */
 let costMode='std';
-function sideCost(dep,m){return dep*0.004+(m==='std'?100:50)+60+(m==='std'?70:30);}
+function sideCost(dep,m){return 48+(m==='std'?90:60)+8+(m==='std'?70:30);}
 function calc(){
   const cap=+cap_.value,dep=+dep_.value,loan=+loan_.value,rate=+rate_.value;
   capVal.textContent=fmtMan(cap); depVal.textContent=fmt(dep); loanVal.textContent=fmt(loan); rateVal.textContent=rate.toFixed(1)+'%';
